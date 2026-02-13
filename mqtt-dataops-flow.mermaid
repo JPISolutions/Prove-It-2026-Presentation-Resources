@@ -1,0 +1,39 @@
+flowchart TB
+    subgraph Edge["Edge Devices"]
+        E1["PLCs / Sensors / Gateways"]
+    end
+
+
+    subgraph Broker["MQTT Broker"]
+        direction LR
+        B1["Raw Topics\n(plain payloads)"]
+        B2["jpi/ Topic Space\n(Sparkplug B)"]
+        B3["Structured UNS Data"]
+    end
+
+    subgraph Ignition["Ignition Gateway"]
+        ME["MQTT Engine\n(Subscribe to raw data\n& structured UNS)"]
+        DO["DataOps Processing\n• Transform & Map\n• ISA-95 Hierarchy\n• SM-Profiles"]
+        MT["MQTT Transmission\n(Re-publish structured data)"]
+        JPI["JPI Framework\nDashboards & Visualization"]
+    end
+
+    E1 -->|"1. Publish raw MQTT"| B1
+    B1 -->|"2. Subscribe via MQTT Engine"| ME
+    B3 -->|"2b. Consume structured UNS"| ME
+    ME -->|"3. Raw data in"| DO
+    DO -->|"4. Structured output"| MT
+    MT -->|"4. Publish Sparkplug B"| B2
+    B2 -->|"5. Consume Sparkplug B"| JPI
+
+    style Edge fill:#4a90d9,stroke:#2c5f8a,color:#fff
+    style Broker fill:#e8a838,stroke:#b07a1a,color:#fff
+    style Ignition fill:#2ecc71,stroke:#1a9c4e,color:#fff
+    style E1 fill:#3a7bc8,stroke:#2c5f8a,color:#fff
+    style B1 fill:#d4942e,stroke:#b07a1a,color:#fff
+    style B2 fill:#d4942e,stroke:#b07a1a,color:#fff
+    style B3 fill:#d4942e,stroke:#b07a1a,color:#fff
+    style ME fill:#27ae60,stroke:#1a9c4e,color:#fff
+    style DO fill:#229954,stroke:#1a7a3e,color:#fff
+    style MT fill:#27ae60,stroke:#1a9c4e,color:#fff
+    style JPI fill:#1e8449,stroke:#156b3a,color:#fff
