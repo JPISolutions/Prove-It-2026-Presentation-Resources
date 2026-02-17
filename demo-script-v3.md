@@ -22,11 +22,12 @@
 > "Most manufacturers we talk to want to leverage AI and advanced analytics — predictive maintenance, energy optimization, autonomous quality control — but they don't know where to start. The technology promises of AI/LLMs are compelling, but without the foundational infrastructure in place, these goals cannot be realized. Data remains trapped in silos, assets are disconnected, and there's no standard architecture to build on. Today we're going to show you where to start."
 
 ### The Problem
-- Plant floor reality:
+- Reality for manufactures is:
   - A mix of brand-new PLCs and 20-year-old RTUs
   - Critical equipment running with little to no remote monitoring
   - Data trapped in local HMIs, proprietary historians, or not captured at all
   - Operations have a gut feel on what isn't running properly, but no data to back it up to
+  - no knowledge of even where to begin...
 
 - **Key line:** "You can't analyze data you don't have. You can't feed an AI model with data locked inside a PLC where its only connection is via serial. Manufacturers need a practical, guided path to start their digital journey — and that starts with the basics: **connect, collect, store, visualize**."
 
