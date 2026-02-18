@@ -3,7 +3,6 @@ flowchart TB
         E1["PLCs / Sensors / Gateways"]
     end
 
-
     subgraph Broker["MQTT Broker"]
         direction LR
         B1["Raw Topics\n(plain payloads)"]
@@ -18,6 +17,10 @@ flowchart TB
         JPI["JPI Framework\nDashboards & Visualization"]
     end
 
+    subgraph TimebaseDB["TimebaseDB"]
+        TB1["MCP Server\n(Historical Data Store)"]
+    end
+
     E1 -->|"1. Publish raw MQTT"| B1
     B1 -->|"2. Subscribe via MQTT Engine"| ME
     B3 -->|"2b. Consume structured UNS"| ME
@@ -25,10 +28,12 @@ flowchart TB
     DO -->|"4. Structured output"| MT
     MT -->|"4. Publish Sparkplug B"| B2
     B2 -->|"5. Consume Sparkplug B"| JPI
+    B2 -->|"6. Store Sparkplug B"| TB1
 
     style Edge fill:#4a90d9,stroke:#2c5f8a,color:#fff
     style Broker fill:#e8a838,stroke:#b07a1a,color:#fff
     style Ignition fill:#2ecc71,stroke:#1a9c4e,color:#fff
+    style TimebaseDB fill:#8e44ad,stroke:#6c3483,color:#fff
     style E1 fill:#3a7bc8,stroke:#2c5f8a,color:#fff
     style B1 fill:#d4942e,stroke:#b07a1a,color:#fff
     style B2 fill:#d4942e,stroke:#b07a1a,color:#fff
@@ -37,3 +42,4 @@ flowchart TB
     style DO fill:#229954,stroke:#1a7a3e,color:#fff
     style MT fill:#27ae60,stroke:#1a9c4e,color:#fff
     style JPI fill:#1e8449,stroke:#156b3a,color:#fff
+    style TB1 fill:#7d3c98,stroke:#6c3483,color:#fff

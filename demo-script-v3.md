@@ -9,6 +9,8 @@
 - Node Red #2 - fuel gas meter
 - Data Ops Diagram open
 - Timebase trend open
+- Ignition Gateway - MQTT Transmission / Engine
+- Personal laptop - Designer - to add Site 4
 - Github:
   - SM-Profiles https://github.com/JPISolutions/SMProfiles
   - DataOps tools https://github.com/JPISolutions/ProveItTools
@@ -68,7 +70,7 @@ Walk through the pattern:
 4. **Ignition re-publishes via MQTT Transmission** — structured data goes back to the broker under the **"jpi" topic space** as Sparkplug B
 5. **Ignition re-consumes the Sparkplug B data** — JPI framework dashboards use the structured data for visualization
 
-- **Key line:** "The edge devices don't need to know anything about ISA-95 or Sparkplug B. They just push raw data. The intelligence is in the DataOps layer — and that's where Ignition earns its keep."
+- **Key line:** "The edge just push raw data. The intelligence is in the DataOps layer."
 
 ---
 
@@ -160,6 +162,11 @@ Walk through the pattern:
 ### Data Store - Ignition OR Timebase Historian
 - With the data in the desired structure, we then enable history collection whcih we have demonstrated using the built-in Ignition historian, as well as piping data to a free historian, Timebase (more on this later...)
 - Show pre-built timebase trend for compressor in Enterprise A
+
+MCP Integration:
+"Can you give me the last 5 minutes of Compressor data from timebase?  Also give me details on what the device might be.
+
+The path should be Enterprise A/jpi/Line 1/Utility/InstrumentAir/Compressor01"
 
 ---
 ## SEGMENT 6: Visualize
